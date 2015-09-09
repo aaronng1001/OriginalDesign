@@ -1,4 +1,4 @@
-int siz = 50; // diameter of the circle
+int size = 50; // diameter of the circle
 int shape = 1; //decides the shape that will be produced, shape starts as a circle
 int xCoorone, yCoorone, xCoortwo, yCoortwo, xCoorthree, yCoorthree;//the coordinates shapes
 boolean keyA, keyB, keyC = false;//to allow the program to draw the rectangle
@@ -7,26 +7,26 @@ byte releaseNum; //sets differences in mouse release
 void setup() {
   size (1000,1000);
   frameRate(30);
-  back();
+  background();
 }
 
 void draw() {
-  if (keyCode==127){
-     back();
+  if (keyCode==DELETE){
+     background();
    }
   if (shape==2){
    mouseWheel();
    circle();
    } else if (shape==3){
-     tri();
+     triangle();
    } else if (shape==1){
-   lin();
+   line();
    } else if (shape==4){
      rectangle();
    }
  }
  
- void back(){ // resets the screen to a random color every time delete is hit
+ void background(){ // resets the screen to a random color every time delete is hit
    int cola = ((int) random(0,255));
    int colb = ((int) random(0,255));
    int colc = ((int) random(0,255));
@@ -35,9 +35,9 @@ void draw() {
  }
  
  void keyPressed() {  //changes the value of "shape"
-   if (keyCode==39){
+   if (keyCode==RIGHT){
      shape=shape+1;
-   } if (keyCode==37){
+   } if (keyCode==LEFT){
      shape=shape-1;
    } if (shape==5){
        shape=1;
@@ -49,23 +49,23 @@ void draw() {
  
 void mouseWheel(MouseEvent event) {
    int sizeBigsmall = event.getCount();
-   siz = siz + sizeBigsmall;
+   size = size + sizeBigsmall;
    //System.out.println(size);
  }
 
 
  void circle() {
-  if (mouseButton==37){ 
-  ellipse(mouseX,mouseY,siz,siz); 
+  if (mouseButton==LEFT){ 
+  ellipse(mouseX,mouseY,size,size); 
    }
  }
 
  
  void rectangle() {
- if (mouseButton==37 && keyA==false){
+ if (mouseButton==LEFT && keyA==false){
    releaseNum=0;
    mouseReleased(); 
- } if (mouseButton==37 && keyA==true){
+ } if (mouseButton==LEFT && keyA==true){
    releaseNum=1;
    mouseReleased();
  }else if(keyA==true && keyB == true){
@@ -91,11 +91,11 @@ void mouseWheel(MouseEvent event) {
    }
  }
  
- void lin(){
- if (mouseButton==37 && keyA==false){
+ void line(){
+ if (mouseButton==LEFT && keyA==false){
    releaseNum=0;
    mouseReleased(); 
- } if (mouseButton==37 && keyA==true){
+ } if (mouseButton==LEFT && keyA==true){
    releaseNum=1;
    mouseReleased();
  }else if(keyA==true && keyB == true){
@@ -105,7 +105,7 @@ void mouseWheel(MouseEvent event) {
   }
  }  
  
- void tri(){
+ void triangle(){
   if (keyPressed){
   if (key=='w' && keyA==false){
    releaseNum=0;
